@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>模型组 2</title>
     <style>
-        * { margin: 0; padding: 0; }
-        body { overflow: hidden; background: #1a1a1a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { overflow: hidden; background: #1a1a1a; font-family: Arial, sans-serif; }
         canvas { display: block; }
 
         .model-buttons {
@@ -17,6 +17,9 @@
             z-index: 99999;
             display: flex;
             gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 10px;
         }
         .model-btn {
             padding: 12px 24px;
@@ -26,111 +29,179 @@
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        .model-btn:hover { background: #2980b9; }
-        .model-btn.active { background: #2ecc71; }
+        .model-btn:hover { 
+            background: #2980b9; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .model-btn.active { 
+            background: #2ecc71; 
+            box-shadow: 0 2px 6px rgba(46, 204, 113, 0.4);
+        }
+        .model-btn:disabled {
+            background: #7f8c8d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 99998;
+            color: white;
+            font-size: 18px;
+            background: rgba(0,0,0,0.7);
+            padding: 15px 30px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .loading.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
-<script src="../global-menu.js"></script>
+    <div class="loading" id="loading">正在加载模型...</div>
 
-<div class="model-buttons">
-    <button class="model-btn active" data-model="../pages/liu.glb">模型 1</button>
-    <button class="model-btn" data-model="../分割1.glb">模型 2</button>
-    <button class="model-btn" data-model="../分割2.glb">模型 3</button>
-    <button class="model-btn" data-model="../分割3.glb">模型 4</button>
-</div>
+    <script src="../global-menu.js"></script>
 
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-  }
-}
-</script>
+    <div class="model-buttons">
+        <button class="model-btn active" data-model="../pages/liu.glb">模型 1</button>
+        <button class="model-btn" data-model="../分割1.glb">模型 2</button>
+        <button class="model-btn" data-model="../分割2.glb">模型 3</button>
+        <button class="model-btn" data-model="../分割3.glb">模型 4</button>
+    </div>
 
-<script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+    </script>
 
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x202020);
+    <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 10;
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x202020);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 10;
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-scene.add(ambientLight);
-const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-dirLight.position.set(5, 10, 5);
-scene.add(dirLight);
+    const renderer = new THREE.WebGLRenderer({ 
+        antialias: true,
+        powerPreference: "high-performance"
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    document.body.appendChild(renderer.domElement);
 
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.08;
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+    
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(5, 10, 5);
+    scene.add(dirLight);
 
-let currentModel = null;
-const loader = new GLTFLoader();
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.minDistance = 2;
+    controls.maxDistance = 30;
 
-function loadModel(url) {
-    if (currentModel) {
-        scene.remove(currentModel);
-        currentModel.traverse(child => {
+    let currentModel = null;
+    const loader = new GLTFLoader();
+    const loadingElement = document.getElementById('loading');
+    let isLoading = false;
+
+    // ========== 【BUG 修复】彻底销毁模型，永不重叠 ==========
+    function disposeModel(model) {
+        if (!model) return;
+        scene.remove(model);
+        model.traverse(child => {
             if (child.material) {
-                if (child.material.map) child.material.map.dispose();
-                child.material.dispose();
+                const mats = Array.isArray(child.material) ? child.material : [child.material];
+                mats.forEach(mat => {
+                    for (let t in mat) {
+                        if (mat[t] && mat[t].isTexture) mat[t].dispose();
+                    }
+                    mat.dispose();
+                });
             }
             if (child.geometry) child.geometry.dispose();
         });
-        currentModel = null;
     }
 
-    loader.load(url, (gltf) => {
-        const model = gltf.scene;
-        currentModel = model;
-        const box = new THREE.Box3().setFromObject(model);
-        const center = box.getCenter(new THREE.Vector3());
-        const size = box.getSize(new THREE.Vector3());
-        const maxDim = Math.max(size.x, size.y, size.z);
-        const scale = 4 / maxDim;
-        model.scale.setScalar(scale);
-        model.position.sub(center.multiplyScalar(scale));
-        scene.add(model);
+    function loadModel(url) {
+        if (isLoading) return;
+        isLoading = true;
+        loadingElement.classList.add('show');
+
+        // 先销毁旧模型
+        disposeModel(currentModel);
+        currentModel = null;
+
+        loader.load(url, (gltf) => {
+            const model = gltf.scene;
+            currentModel = model;
+
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = maxDim > 0 ? 4 / maxDim : 1;
+
+            model.scale.setScalar(scale);
+            model.position.copy(center).multiplyScalar(-scale);
+
+            scene.add(model);
+
+            isLoading = false;
+            loadingElement.classList.remove('show');
+        }, undefined, (err) => {
+            console.error(err);
+            isLoading = false;
+            loadingElement.classList.remove('show');
+        });
+    }
+
+    const buttons = document.querySelectorAll('.model-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (isLoading) return;
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            loadModel(btn.dataset.model);
+        });
     });
-}
 
-const buttons = document.querySelectorAll('.model-btn');
-buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        loadModel(btn.dataset.model);
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
     });
-});
 
-// ✅ 这里已经改成你自己的模型！
-loadModel("../pages/liu.glb");
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
 
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-function animate() {
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
-}
-animate();
-</script>
+    loadModel("../pages/liu.glb");
+    animate();
+    </script>
 </body>
 </html>

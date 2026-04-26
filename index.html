@@ -30,9 +30,32 @@
         }
         .model-btn:hover { background: #2980b9; }
         .model-btn.active { background: #2ecc71; }
+
+        /* 👇 只新加的加载弹窗样式 */
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 99998;
+            color: white;
+            font-size: 18px;
+            background: rgba(0,0,0,0.7);
+            padding: 15px 30px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .loading.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
+
+<!-- 👇 只新加的加载弹窗 -->
+<div class="loading" id="loading">正在加载模型...</div>
 
 <script src="./global-menu.js"></script>
 
@@ -80,23 +103,23 @@ controls.dampingFactor = 0.08;
 let currentModel = null;
 const loader = new GLTFLoader();
 
+// 👇 只新加的
+const loading = document.getElementById('loading');
+
 function loadModel(url) {
-    // --------------------------
-    // ✅ 核心修复：彻底销毁旧模型
-    // --------------------------
+    // 👇 切换时显示加载弹窗
+    loading.classList.add('show');
+
     if (currentModel) {
         scene.remove(currentModel);
         currentModel.traverse(child => {
             if (child.material) {
-                // 销毁贴图
                 if (child.material.map) child.material.map.dispose();
                 if (child.material.normalMap) child.material.normalMap.dispose();
                 if (child.material.roughnessMap) child.material.roughnessMap.dispose();
                 if (child.material.metalnessMap) child.material.metalnessMap.dispose();
-                // 销毁材质
                 child.material.dispose();
             }
-            // 销毁几何体
             if (child.geometry) child.geometry.dispose();
         });
         currentModel = null;
@@ -116,6 +139,9 @@ function loadModel(url) {
         model.position.sub(center.multiplyScalar(scale));
 
         scene.add(model);
+
+        // 👇 加载完成隐藏弹窗
+        loading.classList.remove('show');
     });
 }
 
