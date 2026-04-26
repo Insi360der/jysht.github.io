@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D模型主页</title>
+    <title>模型组 2</title>
     <style>
         * { margin: 0; padding: 0; }
         body { overflow: hidden; background: #1a1a1a; }
@@ -34,13 +34,13 @@
 </head>
 <body>
 
-<script src="./global-menu.js"></script>
+<script src="../global-menu.js"></script>
 
 <div class="model-buttons">
-    <button class="model-btn active" data-model="./主图.glb">模型 1</button>
-    <button class="model-btn" data-model="./分割1.glb">模型 2</button>
-    <button class="model-btn" data-model="./分割2.glb">模型 3</button>
-    <button class="model-btn" data-model="./分割3.glb">模型 4</button>
+    <button class="model-btn active" data-model="../pages/liu.glb">模型 1</button>
+    <button class="model-btn" data-model="../分割1.glb">模型 2</button>
+    <button class="model-btn" data-model="../分割2.glb">模型 3</button>
+    <button class="model-btn" data-model="../分割3.glb">模型 4</button>
 </div>
 
 <script type="importmap">
@@ -116,7 +116,8 @@ buttons.forEach(btn => {
     });
 });
 
-loadModel("./主图.glb");
+// ✅ 这里已经改成你自己的模型！
+loadModel("../pages/liu.glb");
 
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
