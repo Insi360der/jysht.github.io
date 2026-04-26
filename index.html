@@ -8,13 +8,13 @@
         body { overflow: hidden; background: #1a1a1a; }
         canvas { display: block; }
 
-        /* 按钮样式 —— 修复层级！*/
+        /* 按钮样式 */
         .model-buttons {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 99999; /* 这里改大，确保在最上层 */
+            z-index: 99999;
             display: flex;
             gap: 12px;
         }
@@ -136,18 +136,15 @@ function loadModel(url) {
 const buttons = document.querySelectorAll('.model-btn');
 buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-        // 按钮高亮
         buttons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        
-        // 加载对应模型
         const modelUrl = btn.getAttribute('data-model');
         loadModel(modelUrl);
     });
 });
 
 // 默认加载第一个模型
-loadModel("./3D.glb");
+loadModel("./主图.glb");
 
 // 窗口自适应
 window.addEventListener('resize', () => {
