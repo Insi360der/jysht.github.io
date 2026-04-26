@@ -81,13 +81,22 @@ let currentModel = null;
 const loader = new GLTFLoader();
 
 function loadModel(url) {
+    // --------------------------
+    // ✅ 核心修复：彻底销毁旧模型
+    // --------------------------
     if (currentModel) {
         scene.remove(currentModel);
         currentModel.traverse(child => {
             if (child.material) {
+                // 销毁贴图
                 if (child.material.map) child.material.map.dispose();
+                if (child.material.normalMap) child.material.normalMap.dispose();
+                if (child.material.roughnessMap) child.material.roughnessMap.dispose();
+                if (child.material.metalnessMap) child.material.metalnessMap.dispose();
+                // 销毁材质
                 child.material.dispose();
             }
+            // 销毁几何体
             if (child.geometry) child.geometry.dispose();
         });
         currentModel = null;
@@ -96,13 +105,16 @@ function loadModel(url) {
     loader.load(url, (gltf) => {
         const model = gltf.scene;
         currentModel = model;
+
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
         const maxDim = Math.max(size.x, size.y, size.z);
         const scale = 4 / maxDim;
+
         model.scale.setScalar(scale);
         model.position.sub(center.multiplyScalar(scale));
+
         scene.add(model);
     });
 }
