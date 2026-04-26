@@ -48,8 +48,8 @@ document.body.insertAdjacentHTML("afterbegin", `
 
 <button id="menuBtn">菜单</button>
 <div id="sideMenu" class="sideMenu">
-    <button class="pageBtn" onclick="go('index.html')">主页</button>
-    <button class="pageBtn" onclick="go('pages/liu.html')">模型组2</button>
+    <button class="pageBtn" onclick="go('index.html')">林沛颖-揭阳上河图</button>
+    <button class="pageBtn" onclick="go('pages/liu.html')">刘益杰</button>
     <button class="pageBtn" onclick="go('page3.html')">模型组3</button>
     <button class="pageBtn" onclick="go('page4.html')">模型组4</button>
 </div>
