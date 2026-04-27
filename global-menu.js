@@ -2,16 +2,16 @@ document.body.insertAdjacentHTML("afterbegin", `
 <style>
 #menuBtn {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 12px;
+    left: 12px;
     z-index: 100000;
     background: #333;
     color: #fff;
     border: none;
-    padding: 10px 14px;
+    padding: 10px 14px; /* 👈 菜单按钮 */
     border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 10px; /* 👈 菜单文字 */
 }
 .sideMenu {
     position: fixed;
@@ -44,6 +44,22 @@ document.body.insertAdjacentHTML("afterbegin", `
 .pageBtn:hover {
     background: #2980b9;
 }
+
+/* 👇 右下角提示文字样式（修复位置+白色） */
+.loading-tip {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 99999;
+    color: white;
+    font-size: 12px;
+    text-align: right;
+    line-height: 1.5;
+    background: rgba(0,0,0,0.4);
+    padding: 6px 10px;
+    border-radius: 6px;
+    max-width: 250px;
+}
 </style>
 
 <button id="menuBtn">菜单</button>
@@ -59,6 +75,12 @@ document.body.insertAdjacentHTML("afterbegin", `
     <button class="pageBtn" onclick="go('pages/huang.html')">黄志鹏《潮厝夜辉》</button>
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
+</div>
+
+<!-- 👇 正确放外面，不进菜单 -->
+<div class="loading-tip">
+由于网站部署于GitHub海外服务器，3D模型加载速度会相对缓慢，首次加载约需10秒。实际加载时长，受设备性能与网络环境影响<br>
+PS:推荐开启加速器访问效果更佳哦qwq
 </div>
 `);
 
