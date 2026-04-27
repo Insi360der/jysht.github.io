@@ -50,8 +50,15 @@ document.body.insertAdjacentHTML("afterbegin", `
 <div id="sideMenu" class="sideMenu">
     <button class="pageBtn" onclick="go('index.html')">林沛颖《揭阳上河图》</button>
     <button class="pageBtn" onclick="go('pages/liu.html')">刘益杰《潮粥烟火》</button>
-    <button class="pageBtn" onclick="go('page3.html')">詹培彦《人间烟火 耕织卷》</button>
-    <button class="pageBtn" onclick="go('page4.html')">徐楷泳《慢煮时光 细品家常》</button>
+    <button class="pageBtn" onclick="go('pages/pei.html')">詹培彦《人间烟火 耕织卷》</button>
+    <button class="pageBtn" onclick="go('pages/xu.html')">徐楷泳《慢煮时光 细品家常》</button>
+    <button class="pageBtn" onclick="go('pages/hao.html')">陈浩祺《潮音·戏影》</button>
+    <button class="pageBtn" onclick="go('pages/linshuo.html')">林烁豪《嵌瓷里的红色征程》</button>
+    <button class="pageBtn" onclick="go('pages/he.html')">何浩铭《门映鎏光》</button>
+    <button class="pageBtn" onclick="go('pages/wu.html')">吴俊程《榕影金晖》</button>
+    <button class="pageBtn" onclick="go('pages/huang.html')">黄志鹏《潮厝夜辉》</button>
+    <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
+    <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
 </div>
 `);
 
