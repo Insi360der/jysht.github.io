@@ -8,10 +8,10 @@ document.body.insertAdjacentHTML("afterbegin", `
     background: #333;
     color: #fff;
     border: none;
-    padding: 10px 14px; /* 👈 菜单按钮 */
+    padding: 10px 14px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 10px; /* 👈 菜单文字 */
+    font-size: 10px;
 }
 .sideMenu {
     position: fixed;
@@ -25,6 +25,10 @@ document.body.insertAdjacentHTML("afterbegin", `
     transition: 0.3s ease;
     padding: 80px 20px 20px;
     box-sizing: border-box;
+    
+    /* 👇 这里开启上下滑动 */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .sideMenu.open {
     transform: translateX(0);
@@ -45,7 +49,6 @@ document.body.insertAdjacentHTML("afterbegin", `
     background: #2980b9;
 }
 
-/* 👇 右下角提示文字样式（修复位置+白色） */
 .loading-tip {
     position: fixed;
     right: 10px;
@@ -77,7 +80,6 @@ document.body.insertAdjacentHTML("afterbegin", `
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
 </div>
 
-<!-- 👇 正确放外面，不进菜单 -->
 <div class="loading-tip">
 由于网站部署于GitHub海外服务器，3D模型加载速度会相对缓慢，首次加载约需10秒。实际加载时长，受设备性能与网络环境影响<br>
 PS:推荐开启加速器访问效果更佳哦qwq
