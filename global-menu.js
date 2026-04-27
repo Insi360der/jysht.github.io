@@ -11,7 +11,7 @@ document.body.insertAdjacentHTML("afterbegin", `
     padding: 10px 14px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 12px;
 }
 .sideMenu {
     position: fixed;
@@ -104,7 +104,8 @@ document.body.insertAdjacentHTML("afterbegin", `
 </div>
 
 <div class="loading-tip">
-由于网站部署于GitHub海外服务器，3D模型加载速度会相对缓慢，首次加载约需10秒。实际加载时长，受设备性能与网络环境影响<br>
+由于网站部署于GitHub海外服务器，3D模型加载速度会相对缓慢，首次加载约需10秒。实际加载时长受设备性能与网络环境影响<br>
+PS:若遇到模型画面重叠问题，刷新页面即可<br>
 PS:推荐开启加速器访问效果更佳哦qwq
 </div>
 `);
