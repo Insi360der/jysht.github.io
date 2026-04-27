@@ -25,10 +25,9 @@ document.body.insertAdjacentHTML("afterbegin", `
     transition: 0.3s ease;
     padding: 80px 20px 20px;
     box-sizing: border-box;
-    
-    /* 👇 这里开启上下滑动 */
     overflow-y: auto;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 .sideMenu.open {
     transform: translateX(0);
@@ -47,6 +46,24 @@ document.body.insertAdjacentHTML("afterbegin", `
 }
 .pageBtn:hover {
     background: #2980b9;
+}
+
+/* 二维码容器样式 */
+.qrcode-box {
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
+
+.qrcode-box img {
+    width: 100px;       /* 固定宽度 */
+    height: 100px;      /* 固定高度，保持正方形 */
+    margin: 8px auto;
+    display: block;
+    border-radius: 4px;
+    background: #fff;
+    object-fit: contain; /* 保持图片比例不变形 */
 }
 
 .loading-tip {
@@ -78,6 +95,12 @@ document.body.insertAdjacentHTML("afterbegin", `
     <button class="pageBtn" onclick="go('pages/huang.html')">黄志鹏《潮厝夜辉》</button>
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
+
+    <!-- 菜单底部二维码 -->
+    <div class="qrcode-box">
+        <img src="images/二维码.png" alt="联系二维码" />
+        <span>投稿上传 扫码联络</span>
+    </div>
 </div>
 
 <div class="loading-tip">
