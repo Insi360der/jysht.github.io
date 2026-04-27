@@ -50,8 +50,8 @@ document.body.insertAdjacentHTML("afterbegin", `
 <div id="sideMenu" class="sideMenu">
     <button class="pageBtn" onclick="go('index.html')">林沛颖《揭阳上河图》</button>
     <button class="pageBtn" onclick="go('pages/liu.html')">刘益杰《潮粥烟火》</button>
-    <button class="pageBtn" onclick="go('page3.html')">模型组3</button>
-    <button class="pageBtn" onclick="go('page4.html')">模型组4</button>
+    <button class="pageBtn" onclick="go('page3.html')">詹培彦《人间烟火·耕织卷》</button>
+    <button class="pageBtn" onclick="go('page4.html')">徐楷泳《慢煮时光 细品家常》</button>
 </div>
 `);
 
