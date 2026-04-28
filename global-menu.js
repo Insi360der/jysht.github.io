@@ -93,6 +93,8 @@ document.body.insertAdjacentHTML("afterbegin", `
     <button class="pageBtn" onclick="go('pages/he.html')">何浩铭《门映鎏光》</button>
     <button class="pageBtn" onclick="go('pages/wu.html')">吴俊程《榕影金晖》</button>
     <button class="pageBtn" onclick="go('pages/huang.html')">黄志鹏《潮厝夜辉》</button>
+    <button class="pageBtn" onclick="go('pages/zhen.html')">方镇耿《四境惊鸿》</button>
+    <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
 
