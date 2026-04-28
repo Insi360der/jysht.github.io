@@ -98,7 +98,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 
     <!-- 菜单底部二维码 -->
     <div class="qrcode-box">
-        <img src="images/二维码.png" alt="联系二维码" />
+        <img src="images/二维码.jpg" alt="联系二维码" />
         <span>投稿上传 扫码联络</span>
     </div>
 </div>
