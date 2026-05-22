@@ -17,14 +17,11 @@
 ## Installation
 
 ```bash
-# Install globally
-npm install -g reactbits-dev-mcp-server
-
-# Or run directly with npx (no installation required)
-npx reactbits-dev-mcp-server
-
-# Or install as a dependency
-npm install reactbits-dev-mcp-server
+<!-- 菜单底部二维码 -->
+    <div class="qrcode-box">
+        <img src="images/二维码.jpg" alt="联系二维码" />
+        <span>投稿上传 扫码联络</span>
+    </div>
 ```
 ### 提示栏---108
 <div class="loading-tip">
