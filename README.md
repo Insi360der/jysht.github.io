@@ -24,7 +24,7 @@ loadModel("./主图.glb");
 ```
 
 ## global-menu.js
-### 菜单健---85--可添加新增
+### 菜单键---85--可添加新增
 
 ```bash
 <button id="menuBtn">菜单</button>
@@ -34,7 +34,7 @@ loadModel("./主图.glb");
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
 ```
 
-### 菜单健底下二维码---101
+### 菜单键底下二维码---101
 
 ```bash
 <!-- 菜单底部二维码 -->
@@ -44,7 +44,7 @@ loadModel("./主图.glb");
     </div>
 ```
 
-### 提示栏---108
+### 右下角提示栏---108
 
 ```bash
 <div class="loading-tip">
@@ -54,8 +54,7 @@ PS:推荐开启加速器访问效果更佳哦qwq
 </div>
 ```
 
-## <a href="https://insi360der.github.io/jysht.github.io" target="_blank">点击访问3D模型主页</a>
-## 扫码访问网站
+## <a href="https://insi360der.github.io/jysht.github.io" target="_blank">扫码访问网站或点击我</a>
 <img src="二维码.png" alt="网站二维码" />
 
 ## 扫码联系
