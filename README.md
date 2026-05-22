@@ -54,9 +54,10 @@ PS:推荐开启加速器访问效果更佳哦qwq
 </div>
 ```
 
-## 扫码访问网站
 ## <a href="https://insi360der.github.io/jysht.github.io" target="_blank">点击访问3D模型主页</a>
+## 扫码访问网站
 <img src="二维码.png" alt="网站二维码" />
+
 ## 扫码联系
 <img src="images/二维码.jpg" alt="联系二维码" />
 
