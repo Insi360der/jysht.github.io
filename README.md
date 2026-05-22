@@ -37,9 +37,8 @@ PS:推荐开启加速器访问效果更佳哦qwq
 - 无序列表2222
 1. 有序列表1111
 2. 有序列表2222
-
-[链接文本](https://github.com/Insi360der/jysht.github.io)
-[图片描述](https://raw.githubusercontent.com/Insi360der/jysht.github.io/refs/heads/main/%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
+<img src="二维码.png" alt="网站二维码" />
+<img src="images/二维码.jpg" alt="联系二维码" />
 
 ```代码块```
 
