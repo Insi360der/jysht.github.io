@@ -11,8 +11,8 @@
 1. 有序列表1
 2. 有序列表2
 
-[链接文本](https://jysht.github.io)
-![图片描述][(https://github.com/Insi360der/jysht.github.io/blob/main/%E4%BA%8C%E7%BB%B4%E7%A0%81.png?raw=true)
+[链接文本](https://github.com/Insi360der/jysht.github.io)
+[图片描述](https://github.com/Insi360der/jysht.github.io/blob/main/%E4%BA%8C%E7%BB%B4%E7%A0%81.png?raw=true)
 
 ```代码块```
 
