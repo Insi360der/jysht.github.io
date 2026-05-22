@@ -1,6 +1,26 @@
 # jysht.github.io
-### global-menu.js
-### 菜单健---85
+## index.html
+### 加载模型弹窗---68
+```bash
+<div class="loading" id="loading">正在加载模型...</div>
+```
+### 
+
+```bash
+loadModel("./主图.glb");
+```
+### 模型切换按钮---72--可添加新增
+```bash
+<div class="model-buttons">
+    <button class="model-btn active" data-model="./主图.glb">模型 1</button>
+    <button class="model-btn" data-model="./分割1.glb">模型 2</button>
+    <button class="model-btn" data-model="./分割2.glb">模型 3</button>
+    <button class="model-btn" data-model="./分割3.glb">模型 4</button>
+</div>
+```
+
+## global-menu.js
+### 菜单健---85--可添加新增
 
 ```bash
 <button id="menuBtn">菜单</button>
@@ -19,6 +39,7 @@
         <span>投稿上传 扫码联络</span>
     </div>
 ```
+
 ### 提示栏---108
 
 ```bash
