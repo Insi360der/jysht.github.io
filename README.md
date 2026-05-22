@@ -1,6 +1,6 @@
 # jysht.github.io
 ## global-menu.js
-### 菜单健---85
+## 菜单健---85
 
 ```bash
 <button id="menuBtn">菜单</button>
@@ -28,6 +28,10 @@ PS:若遇到模型画面重叠问题，刷新页面即可<br>
 PS:推荐开启加速器访问效果更佳哦qwq
 </div>
 ```
+## 扫码访问网站
+<img src="二维码.png" alt="网站二维码" />
+<img src="images/二维码.jpg" alt="联系二维码" />
+
 
 ## 
 
@@ -37,9 +41,7 @@ PS:推荐开启加速器访问效果更佳哦qwq
 - 无序列表2222
 1. 有序列表1111
 2. 有序列表2222
-<img src="二维码.png" alt="网站二维码" />
-<img src="images/二维码.jpg" alt="联系二维码" />
-
+3. 
 ```代码块```
 
 > 引用文本
