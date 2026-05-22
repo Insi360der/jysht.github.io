@@ -8,14 +8,6 @@
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button>
     <button class="pageBtn" onclick="go('pages/page5.html')">无《无》</button> **
 ### 菜单健底下二维码---101
-    <!-- 菜单底部二维码 -->
-    <div class="qrcode-box">
-        <img src="images/二维码.jpg" alt="联系二维码" />
-        <span>投稿上传 扫码联络</span>
-    </div>
-</div>
-## Installation
-
 ```bash
 <!-- 菜单底部二维码 -->
     <div class="qrcode-box">
