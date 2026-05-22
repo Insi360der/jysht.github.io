@@ -1,11 +1,15 @@
 # jysht.github.io
 ## index.html
-### 加载模型弹窗---68
+
+### 导航栏名称---6
+```bash
+<title>3D模型主页</title>
+```
+### 加载模型时弹窗---68
 ```bash
 <div class="loading" id="loading">正在加载模型...</div>
 ```
-### 
-
+### 每次访问页面都会调用加载目标3D模型---164
 ```bash
 loadModel("./主图.glb");
 ```
