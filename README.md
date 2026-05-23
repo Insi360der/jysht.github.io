@@ -53,8 +53,7 @@ PS:若遇到模型画面重叠问题，刷新页面即可<br>
 PS:推荐开启加速器访问效果更佳哦qwq
 </div>
 ```
-## 海内首次访问加载约需10秒。实际加载时长受设备性能与网络环境影响
-## 推荐开启加速器访问效果更佳哦qwq
+
 ## <a href="https://insi360der.github.io/jysht.github.io" target="_blank">扫码预览网站或点击我</a>
 <img src="二维码.png" alt="网站二维码" />
 
