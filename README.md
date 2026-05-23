@@ -1,6 +1,13 @@
 # jysht.github.io
-## index.html
 
+# 新手教程
+
+```bash
+单击左键旋转模型，长按SHIFT健或CTRL健，移动模型位置
+```
+
+# 关于部署
+## index.html
 ### 导航栏名称---6
 ```bash
 <title>3D模型主页</title>
